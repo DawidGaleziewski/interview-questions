@@ -135,23 +135,53 @@ https://flaviocopes.com/javascript-async-defer/
 
 5. Prevent cross site scripting XSS
 ================================
-################################
+
 Exploiting the fact that browser will start running the tag when it encounters it.
 For example <script> alert('hey').
 There are two types perisant and not persitant XSS attas
 
 Preventing by:
-- Escape dynamic content
-SDL - Security Development Lifecycle- assume every data comming from user is not secure
+- Escape dynamic content (ie <> characters to prevent <script> tag)
+-SDL - Security Development Lifecycle- assume every data comming from user is not secure
 Use correct meta tag:
 <META http-equiv="Content-Type" content="text/html; charset= ISO-8859-1">
 -Whitelist/restrict some data from getting entered
 
+################################
 
 
 
-6. Aria? HTML attributes? Used in Bootstrap
-================================
+
+
+6. Aria - WAI-ARIA - Accessible Rich Internet Applications
+================================ 
+-Use semantic HTML tags when possible
+-Make sure keyboard navigation is available
+-Use role attribute when no semantic attributes are avilable
+
+Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities.
+
+It supplements HTML so that interactions and widgets commonly used in applications can be passed to assistive technologies when there is not otherwise a mechanism. For example, ARIA enables accessible navigation landmarks in HTML4, JavaScript widgets, form hints and error messages, live content updates, and more. 
+
+ When we use div, that acts as progress bar we do not have semantic element that would change the div.
+ In this case we have to use role attribute:
+ role="progressbar"
+ 
+ 
+It is also important to acknowledge that some people who rely on assistive technology are reluctant to upgrade their software, for fear of losing the ability to interact with their computer and browser. Because of this, it is important to use semantic HTML elements whenever possible, as semantic HTML has far better support for assistive technology.
+
+
+Aria elements will have:
+	Role: "Pop-up button"
+	Name: "Preferred seat type" (something like a label)
+	State: "collapsed"
+	Value: "No preference"
+
+	
+	To test Aria:
+	- use screen reader
+	- Tools in devTools -> settings -> exeriments =-> Accessibility Inspection
+	
 ################################
 
 
@@ -160,6 +190,14 @@ Use correct meta tag:
 
 7. IFFE - when we use it?
 ================================
+
+- Avoid global scope
+- when we want to execute function as soon as we defined
+- when we want to invoke it only once
+- it reduces the scope only for this function (minifing)
+-acting as closure
+-used to write js libreries- so that variables used in labibraries wont conflict with the program that uses it
+
 ################################
 
 
